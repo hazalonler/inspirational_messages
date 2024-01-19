@@ -8,16 +8,27 @@ const todayArr = ['good', 'hopeful', 'full of happiness', 'powerful', 'sweet', '
 const tomorrowArr = ['more satisfied', 'more beautiful', 'less stressful','braver', 'clearer', 'more exciting',  'prettier']
 
 
-const inspirationMessage = () => {
+const messageArguments = () => {
 
-    let randomNum = Math.floor(Math.random() * 8);
-    let message = yesterday + yesterdayArr[randomNum] + '\n' + today + todayArr[randomNum] + '\n' + tomorrow + tomorrowArr[randomNum]
+    let randomNum = Math.floor(Math.random() * 7);
+    let messageArr = []
+    messageArr.push(yesterdayArr[randomNum]) 
+    messageArr.push(todayArr[randomNum])
+    messageArr.push(tomorrowArr[randomNum])
 
-    return message
+    return messageArr
 }
 
+const messageFactory = (messageArr) => {
+    return {
+        yesterdayMessage: yesterday + messageArr[0],
+        todayMessage: today + messageArr[1],
+        tomorrowMessage: tomorrow + messageArr[2]
+    }
+};
 
-console.log(inspirationMessage());
+
+console.log(messageFactory(messageArguments()));
 
 
 
